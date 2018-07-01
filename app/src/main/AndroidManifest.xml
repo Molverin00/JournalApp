@@ -14,6 +14,7 @@
 
         <activity
             android:name=".ui.AddNewActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
