@@ -1,60 +1,20 @@
-# Project Title
+# Journal App
 
-One Paragraph of project description goes here
+Journal App is a Mobile Application that lets users pen down their thoughts and feelings.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+First, Sign up with a google account to use the application
+Press the floating button to add new journals
+New journals will be displayed as a list on the main screen.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+Nothing.
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+Install included .apk file.
 
 ## Built With
 
@@ -72,9 +32,9 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+Marouen CHaouch I
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Marouen Chaouch** - *Initial work* - [JournalApp](https://github.com/Molverin00/JournalApp)
 
 ## License
 
