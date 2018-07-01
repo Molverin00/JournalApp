@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.example.marouen.journalapp.BaseActivity;
 import com.example.marouen.journalapp.R;
+import com.example.marouen.journalapp.Utility.SharedPrefsUtils;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -191,6 +192,11 @@ public class GoogleSignInActivity extends BaseActivity implements
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+
+            SharedPrefsUtils.setStringPreference(getApplicationContext(), BaseActivity.ARG_FIREBASE_ID, user.getUid());
+
+            startActivity(new Intent(GoogleSignInActivity.this, MainActivity.class));
+
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);

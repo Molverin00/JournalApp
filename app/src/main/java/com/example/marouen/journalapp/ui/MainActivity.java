@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -16,11 +17,19 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.marouen.journalapp.AppExecutors;
+import com.example.marouen.journalapp.BaseActivity;
 import com.example.marouen.journalapp.DB.AppDatabase;
 import com.example.marouen.journalapp.R;
+import com.example.marouen.journalapp.Utility.SharedPrefsUtils;
 import com.example.marouen.journalapp.adapters.JournalAdapter;
 import com.example.marouen.journalapp.model.Journal;
 import com.example.marouen.journalapp.viewmodel.MainViewModel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,11 +41,30 @@ public class MainActivity extends AppCompatActivity implements JournalAdapter.It
     private AppDatabase mDb;
 
 
+    // [START declare_auth]
+    private FirebaseAuth mAuth;
+    // [END declare_auth]
+
+    private GoogleSignInClient mGoogleSignInClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        setSupportActionBar(toolbar);
+
+        // [START config_signin]
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        // [END config_signin]
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        // [START initialize_auth]
+        mAuth = FirebaseAuth.getInstance();
+        // [END initialize_auth]
 
         mRecyclerView = findViewById(R.id.rv_articles);
         mAdapter = new JournalAdapter(this);
@@ -79,6 +107,13 @@ public class MainActivity extends AppCompatActivity implements JournalAdapter.It
         });
         mDb = AppDatabase.getInstance(this);
         setupViewModel();
+
+        // get shared pref
+
+
+        String firebaseId = SharedPrefsUtils.getStringPreference(getApplicationContext(), BaseActivity.ARG_FIREBASE_ID);
+
+        //showSuccessSnackBar(findViewById(android.R.id.content), MainActivity.this, getApplicationContext().getString(R.string.signed_in_as, firebaseId));
     }
 
     @Override
@@ -96,17 +131,9 @@ public class MainActivity extends AppCompatActivity implements JournalAdapter.It
 //        if (id == R.id.action_settings) {
 //            return true;
 //        }
-//        if (id == R.id.action_logout) {
-//            AuthUI.getInstance()
-//                    .signOut(this)
-//                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            // user is now signed out
-//                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//                            finish();
-//                        }
-//                    });
-//        }
+        if (id == R.id.action_logout) {
+            signOut();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -149,6 +176,20 @@ public class MainActivity extends AppCompatActivity implements JournalAdapter.It
     protected void onStart() {
         super.onStart();
 
+    }
+
+    private void signOut() {
+        // Firebase sign out
+        mAuth.signOut();
+
+        // Google sign out
+        mGoogleSignInClient.signOut().addOnCompleteListener(this,
+                new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        finish();
+                    }
+                });
     }
 
 }

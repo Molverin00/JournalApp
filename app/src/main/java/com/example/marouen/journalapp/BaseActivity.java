@@ -9,6 +9,8 @@ import android.view.inputmethod.InputMethodManager;
 
 public class BaseActivity extends AppCompatActivity {
 
+    public static String ARG_FIREBASE_ID = "firebaseId";
+
     @VisibleForTesting
     public ProgressDialog mProgressDialog;
 
