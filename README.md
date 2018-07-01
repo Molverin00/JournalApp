@@ -1,6 +1,6 @@
 # Journal App
 
-Journal App is a Mobile Application that lets users pen down their thoughts and feelings.
+Journal App is a Mobile Application that lets users pen down their thoughts and feelings (online and offline)
 
 ## Getting Started
 
