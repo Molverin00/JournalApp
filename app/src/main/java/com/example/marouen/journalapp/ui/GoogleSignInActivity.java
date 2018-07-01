@@ -1,4 +1,4 @@
-package com.example.marouen.journalapp; /**
+package com.example.marouen.journalapp.ui; /**
  * Copyright 2016 Google Inc. All Rights Reserved.
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,6 +22,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.marouen.journalapp.BaseActivity;
+import com.example.marouen.journalapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

@@ -13,18 +13,18 @@ import com.example.marouen.journalapp.model.Journal;
 
 @Database(entities = {Journal.class}, version = 1, exportSchema = false)
 @TypeConverters(DateConverter.class)
-public abstract class AppDB extends RoomDatabase {
-    private static final String LOG_TAG = AppDB.class.getSimpleName();
+public abstract class AppDatabase extends RoomDatabase {
+    private static final String LOG_TAG = AppDatabase.class.getSimpleName();
     private static final String DATABASE_NAME = "journal-db";
     private static final Object LOCK = new Object();
-    private static AppDB sInstance;
+    private static AppDatabase sInstance;
 
-    public static AppDB getInstance(Context context) {
+    public static AppDatabase getInstance(Context context) {
         synchronized (LOCK) {
             if (sInstance == null) {
                 Log.d(LOG_TAG, "new database instance creating");
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
-                        AppDB.class, DATABASE_NAME).fallbackToDestructiveMigration().build();
+                        AppDatabase.class, DATABASE_NAME).fallbackToDestructiveMigration().build();
             }
         }
         Log.d(LOG_TAG, "Getting database instance");

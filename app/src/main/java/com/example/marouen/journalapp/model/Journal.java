@@ -15,8 +15,6 @@ public class Journal {
     private String content;
     @ColumnInfo(name = "created_date")
     private Date createdDate;
-//    @ColumnInfo(name = "updated_date")
-//    private Date updatedDate;
 
     public Journal() {
 
@@ -71,11 +69,5 @@ public class Journal {
                 ", createdDate=" + createdDate +
                 '}';
     }
-//    public Date getUpdatedDate() {
-//        return updatedDate;
-//    }
-//
-//    public void setUpdatedDate(Date updatedDate) {
-//        this.updatedDate = updatedDate;
-//    }
+
 }
