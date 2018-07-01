@@ -4,8 +4,7 @@ Journal App is a Mobile Application that lets users pen down their thoughts and 
 
 ## Getting Started
 
-First, Sign up with a google account to use the application
-Press the floating button to add new journals
+First, Sign up with a google account to use the application then press the floating button to add new journals. 
 New journals will be displayed as a list on the main screen.
 
 ### Prerequisites
@@ -20,7 +19,7 @@ Install included .apk file.
 
 Marouen CHaouch I
 
-* **Marouen Chaouch** - *Initial work* - [JournalApp](https://github.com/Molverin00/JournalApp)
+* **Marouen Chaouch** - *Initial work* - [Molverin00](https://github.com/Molverin00)
 
 ## License
 
